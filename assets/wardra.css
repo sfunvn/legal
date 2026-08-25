@@ -1,0 +1,186 @@
+/* Wardra — "Modernist" stylesheet for Silver AI legal pages.
+   Plain CSS, no build step.
+
+   Three rules carried over from the app's design system, because breaking them
+   here would make the pages read as a different product:
+   1. Content wells are DARKER than the page — recesses cut into paper, never
+      cards lifted off it. Do not "fix" the direction.
+   2. Nothing casts a shadow, and there are no gradients anywhere.
+   3. Two corner registers only: 999 for small interactive things, 14 for
+      containers. Nothing in between. */
+
+:root {
+  color-scheme: light dark;
+  --max: 740px;
+  --accent: #ec3013;          /* modernist red — fills, rules, marks */
+  --accent-deep: #ae1800;     /* the same red at text size — #ec3013 is 3.76:1 and fails AA */
+  --accent-soft: #ffe0d9;
+  --bg: #f3f2f2;              /* the page */
+  --surface: #eae9e9;         /* wells — darker than the page, on purpose */
+  --card: #eae9e9;
+  --text: #201e1d;
+  --text-2: #605d5d;
+  --text-3: #605d5d;
+  --border: #d7d3d3;
+  --radius: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #ff563c;
+    --accent-deep: #ff563c;
+    --accent-soft: #2d2b2b;
+    --bg: #17161a;
+    --surface: #201e1d;
+    --card: #201e1d;
+    --text: #f3f2f2;
+    --text-2: #9b9797;
+    --text-3: #9b9797;
+    --border: #444141;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 Archivo, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+/* ── Header ─────────────────────────────────────────── */
+.masthead { padding: 56px 0 24px; }
+
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-2);
+  margin-bottom: 20px;
+}
+.brand .mark {
+  width: 26px; height: 26px; border-radius: 7px;
+  display: block; object-fit: cover;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 6vw, 2.4rem);
+  line-height: 1.1; letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: .8rem; font-weight: 600; color: var(--text-2);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 999px;
+}
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+.lead {
+  margin: 24px 0 0;
+  font-size: 1.1rem; line-height: 1.6; color: var(--text-2);
+}
+.lead strong { color: var(--text); font-weight: 700; }
+
+/* ── Content well ───────────────────────────────────── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 4px 24px 24px;
+  margin: 32px 0;
+}
+
+section { padding: 22px 0; border-top: 1px solid var(--border); }
+section:first-of-type { border-top: 0; }
+
+h2 {
+  font-size: 1.14rem; letter-spacing: -0.01em; font-weight: 700;
+  margin: 0 0 10px; display: flex; gap: 12px; align-items: baseline;
+}
+h2 .num {
+  flex: none; font-size: .74rem; font-weight: 700; color: #fff;
+  background: var(--accent); border-radius: 999px;
+  min-width: 26px; height: 24px; padding: 0 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transform: translateY(-1px);
+}
+
+p { margin: 0 0 12px; color: var(--text); }
+section p { color: var(--text-2); }
+section p strong { color: var(--text); font-weight: 700; }
+
+ul { margin: 8px 0 4px; padding-left: 0; list-style: none; }
+ul li {
+  position: relative; padding-left: 24px; margin: 9px 0; color: var(--text-2);
+}
+ul li::before {
+  content: ""; position: absolute; left: 4px; top: .78em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+ul li strong { color: var(--text); font-weight: 700; }
+
+/* ── TOC ────────────────────────────────────────────── */
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; }
+.toc a {
+  font-size: .85rem; font-weight: 500;
+  color: var(--text-2); text-decoration: none;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 7px 14px; border-radius: 999px;
+  transition: color .15s ease-out, border-color .15s ease-out;
+}
+.toc a:hover { color: var(--accent-deep); border-color: var(--accent); }
+
+/* ── Links & footer ─────────────────────────────────── */
+a { color: var(--accent-deep); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.footer {
+  padding: 8px 0 64px; color: var(--text-2);
+  font-size: .88rem; display: flex; flex-wrap: wrap;
+  gap: 6px 18px; align-items: center;
+}
+.footer .sep { color: var(--border); }
+
+/* Buttons — a filled red button is always the safe one */
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: .95rem; font-weight: 700;
+  padding: 14px 22px; border-radius: 999px;
+  background: var(--accent); color: #fff;
+  transition: filter .15s ease-out, transform .15s ease-out;
+}
+.btn:hover { filter: brightness(1.05); text-decoration: none; }
+.btn:active { transform: scale(.98); }
+.btn svg { display: block; flex: none; }
+
+/* FAQ */
+.faq h2 { font-size: 1.06rem; }
+.faq section { padding: 20px 0; }
+
+/* Landing-page link list */
+.docs { display: grid; gap: 12px; margin: 26px 0; }
+.docs a.doc {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card); border-radius: var(--radius);
+  padding: 18px 20px; color: var(--text);
+  transition: box-shadow .15s ease-out;
+  box-shadow: inset 0 0 0 2px transparent;
+}
+.docs a.doc:hover { text-decoration: none; box-shadow: inset 0 0 0 2px var(--accent); }
+.docs a.doc .ico {
+  width: 40px; height: 40px; flex: none; border-radius: 999px;
+  display: grid; place-items: center; font-size: 17px;
+  background: var(--accent-soft); color: var(--accent-deep);
+}
+.docs a.doc .t { display: block; font-weight: 700; }
+.docs a.doc .d { display: block; font-size: .88rem; color: var(--text-2); margin-top: 2px; }
+.docs a.doc .chev { margin-left: auto; color: var(--text-2); }
