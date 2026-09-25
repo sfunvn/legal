@@ -220,20 +220,45 @@ Footer: `← Support · Privacy Policy · © {year} Silver AI`
 
 ---
 
-## 4. Stylesheet
+## 4. Stylesheet: same layout, the app's look
 
-Base `assets/<slug>.css` on an existing app sheet:
+Every app shares **one layout** (the markup and class names in section 3, first defined
+in `assets/legal.css`). Each app gets **its own stylesheet** that re-skins that layout
+so the web pages look like the app. The look comes from the **app's own design
+system**, not from the other apps here:
 
-- Keep every selector (the class list in section 3 depends on them).
-- Change only the `:root` tokens (`--accent`, `--accent-deep`, `--accent-soft`, `--bg`,
-  `--surface`, `--card`, `--text`, `--text-2`, `--text-3`, `--border`, `--radius`) and
-  the matching `@media (prefers-color-scheme: dark)` block, plus `font-family` if the
-  app uses its own font.
-- Take the colours from the app's design system (`docs/DESIGN.md` / `tokens.json` in
-  the app repo, if it has them).
-- Text colours must pass WCAG AA (4.5:1) in both light and dark mode. If the brand
-  accent fails at text size, add a darker `--accent-deep` for text, as `wardra.css` does.
-- Update the header comment to name the app.
+| Sheet | Design direction |
+| --- | --- |
+| `legal.css` (Task Cam) | Neutral default: system font, plain cards |
+| `rolliecam.css` | Analog film: warm film-stock palette, sprocket decorations on the brand mark, monospace labels |
+| `moodraw.css` | “Sunlit Ceramic”: warm cream surfaces, moss accent, colour kept for the gradient header |
+| `wardra.css` | “Modernist”: red accent, content areas darker than the page, no shadows or gradients, two corner radii only, Archivo font |
+
+How to build `assets/<slug>.css`:
+
+1. **Read the app repo's design source**, in this order: `docs/DESIGN.md` + `tokens.json`,
+   then colour assets in `Assets.xcassets`, then a theme/colour file in code
+   (e.g. `Theme.swift`, `Color+Brand.swift`). Note the palette (light **and** dark),
+   the font, the corner radii, and any strong rules (e.g. “no shadows”).
+2. **Start from the closest existing sheet**, or `legal.css` if none is close. Keep
+   every selector; the pages depend on them.
+3. **Set the `:root` tokens** (`--accent`, `--accent-deep`, `--accent-soft`, `--bg`,
+   `--surface`, `--card`, `--text`, `--text-2`, `--text-3`, `--border`, `--radius`) and
+   the matching `@media (prefers-color-scheme: dark)` block from the app's palette.
+   Pages must support both light and dark mode.
+4. **Font:** use the system font stack unless the app has its own font. If it does,
+   load it from Google Fonts (preconnect + stylesheet `<link>`s on all three pages, as in
+   `wardra/`) and put it first in the `body` font stack. No other external resources.
+5. **Optional motifs:** small touches taken from the app are welcome (like RollieCam's
+   sprockets or Moodraw's gradient). Keep them in CSS, no images or JS, and keep the
+   text readable. Don't copy another app's motif.
+6. **Accessibility:** text colours must pass WCAG AA (4.5:1) in both modes. If the brand
+   accent fails at text size, add a darker `--accent-deep` for text, as `wardra.css` does.
+7. **Header comment:** name the app, the design direction, and any rules a later
+   editor must not “fix”, as `wardra.css` does.
+
+If the app repo has no design system, ask the developer for the brand colour. If they
+have no preference, use `legal.css` unchanged: link to it and don't create a new sheet.
 
 ---
 
@@ -276,7 +301,7 @@ it by pointing you here. Other developers push to this repo too, so:
 3. Commit using the message format from the history:
 
    ```sh
-   git add <slug>/ assets/<slug>.css README.md
+   git add <slug>/ assets/<slug>.css README.md   # omit the .css if you reused legal.css
    git commit -m "Add {App} support page, privacy policy, and terms of service"
    ```
 
