@@ -59,7 +59,21 @@ Places to look in an iOS app repo:
 - `Assets.xcassets/AppIcon.appiconset`: the 1024 px icon
 
 Before writing any pages, **show the developer a short summary of the data flows you
-found** and get their confirmation.
+found** and get their confirmation. In the same message, confirm that you'll commit
+and push to this repo's `main` when done, unless the developer already said so.
+
+**Sensitive data needs extra care.** If the app handles any of the following, say so
+explicitly in the privacy policy and add a matching disclaimer in the terms. Don't
+reuse another app's disclaimer; write one for this app.
+
+- Health, medication, body or fitness data (including HealthKit): state whether it
+  ever leaves the device, whether it syncs, and that the app is not a medical device
+- Notifications or reminders that people rely on: say they can be delayed or missed
+  and must not be the only safeguard
+- Location, contacts, microphone, or photos of other people
+- Users under 13, or content aimed at children (the standard Children section won't fit)
+- AI-generated output: it can be wrong, and whether prompts or inputs are sent to a
+  third-party model provider
 
 | Fact | Used in |
 | --- | --- |
@@ -173,7 +187,8 @@ Use relative paths only (`../assets/…`, `privacy.html`). The site is served fr
      Subscriptions; Restore purchases)
    - App-specific troubleshooting and disclaimers
 4. `<h2 style="margin:8px 0 4px">Legal</h2>` + `<nav class="docs">` with the two
-   `.doc` cards (🔒 Privacy Policy, 📄 Terms of Service). Copy them verbatim.
+   `.doc` cards (🔒 Privacy Policy, 📄 Terms of Service). Their text is generic, not
+   app-specific, so keep it unchanged.
 5. Footer: `© {year} Silver AI · support@silverai.com`.
 
 ### `privacy.html`: Privacy Policy
@@ -206,7 +221,7 @@ you agree to them. <strong>If you do not agree, do not use the app.</strong>`
 Standard order:
 
 1. License: personal, non-exclusive, non-transferable, revocable; subject to Apple App Store Terms
-2. *(app-specific disclaimers: not medical advice, AI output can be wrong, third-party sites, …)*
+2. *(app-specific disclaimers written for **this** app, e.g. not medical advice, AI output can be wrong, third-party sites. Replace the reference app's disclaimers; don't adapt them)*
 3. Your content: user keeps rights; stored locally; link to `privacy.html`
 4. Subscription (if any): free limit, what Pro unlocks, Apple auto-renew wording (charged to Apple ID at confirmation, renews unless cancelled ≥ 24 h before period end, manage in Settings, refunds via Apple)
 5. No cloud backup: keep your own copies (if applicable)
