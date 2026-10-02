@@ -15,7 +15,10 @@ Plain HTML + CSS, no build step, no JavaScript.
 | Task Cam — on-device camera roll for work | [`workcam/`](workcam/) | [`assets/legal.css`](assets/legal.css) | 17 June 2026 |
 | RollieCam — pocket film camera with live analog looks | [`rolliecam/`](rolliecam/) | [`assets/rolliecam.css`](assets/rolliecam.css) | 26 June 2026 |
 | Moodraw — paint how you feel | [`moodraw/`](moodraw/) | [`assets/moodraw.css`](assets/moodraw.css) | 13 August 2026 |
-| Wardra — private visual wardrobe | [`wardra/`](wardra/) | [`assets/wardra.css`](assets/wardra.css) | 25 August 2026 |
+
+**Wardlayer's pages are not here.** They are served at https://wardlayer.app from the
+`be-fitroomlen` repo (`site/`), moved on 3 October 2026. `assets/wardra.css` stays as a
+stylesheet reference that `AGENTS.md` points to.
 
 ## Structure
 
@@ -25,8 +28,8 @@ assets/            shared + per-app stylesheets
   index.html       Support page (contact, FAQ, links to legal docs)
   privacy.html     Privacy Policy
   terms.html       Terms of Service
-  icon.png         App icon (Moodraw, Wardra)
-  favicon.png      Favicon (Moodraw, Wardra)
+  icon.png         App icon (Moodraw)
+  favicon.png      Favicon (Moodraw)
 ```
 
 ## Publishing
@@ -41,7 +44,6 @@ Each app's URLs (use these in App Store Connect):
 | Task Cam | [/workcam/](https://sfunvn.github.io/legal/workcam/) | [privacy](https://sfunvn.github.io/legal/workcam/privacy.html) | [terms](https://sfunvn.github.io/legal/workcam/terms.html) |
 | RollieCam | [/rolliecam/](https://sfunvn.github.io/legal/rolliecam/) | [privacy](https://sfunvn.github.io/legal/rolliecam/privacy.html) | [terms](https://sfunvn.github.io/legal/rolliecam/terms.html) |
 | Moodraw | [/moodraw/](https://sfunvn.github.io/legal/moodraw/) | [privacy](https://sfunvn.github.io/legal/moodraw/privacy.html) | [terms](https://sfunvn.github.io/legal/moodraw/terms.html) |
-| Wardra | [/wardra/](https://sfunvn.github.io/legal/wardra/) | [privacy](https://sfunvn.github.io/legal/wardra/privacy.html) | [terms](https://sfunvn.github.io/legal/wardra/terms.html) |
 
 The site is served under the `/legal/` sub-path, so links must stay relative
 (`../assets/<name>.css`, `privacy.html`), not root-absolute.
@@ -67,7 +69,7 @@ subscriptions, and confirms them with you. It then writes the pages here, pushes
 
 See [AGENTS.md](AGENTS.md) for the full step-by-step guide: the facts to collect, the
 page skeletons, stylesheet rules, writing style and a verification checklist. It's
-written for AI agents but works just as well for people. In short: copy `wardra/`,
+written for AI agents but works just as well for people. In short: copy `moodraw/`,
 add `assets/<slug>.css`, rewrite all app-specific text, then add the app to both
 tables above.
 

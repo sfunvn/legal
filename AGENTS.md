@@ -5,8 +5,8 @@ iOS apps. It is plain static HTML + CSS: no build step, no JavaScript, no framew
 GitHub Pages publishes the `main` branch root to **https://sfunvn.github.io/legal/**.
 
 Your usual task: **create the three pages for a new app, following the existing
-structure exactly.** Use `wardra/` as the reference. It is the newest and most complete
-app (it has its own icon, favicon and web font).
+structure exactly.** Use `moodraw/` as the reference. It is the most complete app here
+(it has its own icon and favicon).
 
 ## How this repo is used
 
@@ -77,7 +77,7 @@ reuse another app's disclaimer; write one for this app.
 
 | Fact | Used in |
 | --- | --- |
-| App display name (e.g. `Wardra`) and folder slug (lowercase, no spaces, e.g. `wardra`) | everywhere |
+| App display name (e.g. `Moodraw`) and folder slug (lowercase, no spaces, e.g. `moodraw`) | everywhere |
 | One-sentence description of what the app does | Support lead |
 | **Everything that leaves the device**: which data, to which service, whether it's stored, what identifiers go with it | Privacy §“What is sent” |
 | What stays on the device only | Privacy §“What stays local” |
@@ -107,17 +107,17 @@ assets/<slug>.css   App stylesheet
 Start by copying the reference, then rewrite every piece of app-specific text:
 
 ```sh
-cp -r wardra <slug>
-cp assets/wardra.css assets/<slug>.css
+cp -r moodraw <slug>
+cp assets/moodraw.css assets/<slug>.css
 ```
 
-Then remove every leftover Wardra reference:
+Then remove every leftover Moodraw reference:
 
 ```sh
-grep -rn -i "wardra\|Thêm từ link\|Archivo" <slug>/ assets/<slug>.css
+grep -rn -i "moodraw" <slug>/ assets/<slug>.css
 ```
 
-That command must print nothing, unless you deliberately kept the Archivo font.
+That command must print nothing.
 
 Make the icons from the app repo's 1024 px AppIcon (on macOS, `sips` is built in):
 
@@ -148,7 +148,7 @@ beyond the ones already in the reference.
   <meta name="description" content="…">    <!-- page-specific, one sentence -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- optional Google Font: preconnect ×2 + stylesheet, as in wardra/ -->
+  <!-- optional Google Font: preconnect ×2 + stylesheet -->
   <link rel="stylesheet" href="../assets/{slug}.css">
 </head>
 ```
@@ -247,7 +247,7 @@ system**, not from the other apps here:
 | `legal.css` (Task Cam) | Neutral default: system font, plain cards |
 | `rolliecam.css` | Analog film: warm film-stock palette, sprocket decorations on the brand mark, monospace labels |
 | `moodraw.css` | “Sunlit Ceramic”: warm cream surfaces, moss accent, colour kept for the gradient header |
-| `wardra.css` | “Modernist”: red accent, content areas darker than the page, no shadows or gradients, two corner radii only, Archivo font |
+| `wardra.css` (Wardlayer; a reference only, its pages are at wardlayer.app) | “Modernist”: red accent, content areas darker than the page, no shadows or gradients, two corner radii only, Archivo font |
 
 How to build `assets/<slug>.css`:
 
@@ -262,8 +262,8 @@ How to build `assets/<slug>.css`:
    the matching `@media (prefers-color-scheme: dark)` block from the app's palette.
    Pages must support both light and dark mode.
 4. **Font:** use the system font stack unless the app has its own font. If it does,
-   load it from Google Fonts (preconnect + stylesheet `<link>`s on all three pages, as in
-   `wardra/`) and put it first in the `body` font stack. No other external resources.
+   load it from Google Fonts (preconnect + stylesheet `<link>`s on all three pages) and
+   put it first in the `body` font stack. No other external resources.
 5. **Optional motifs:** small touches taken from the app are welcome (like RollieCam's
    sprockets or Moodraw's gradient). Keep them in CSS, no images or JS, and keep the
    text readable. Don't copy another app's motif.
