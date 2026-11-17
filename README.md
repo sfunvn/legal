@@ -15,6 +15,8 @@ Plain HTML + CSS, no build step, no JavaScript.
 | Task Cam — on-device camera roll for work | [`workcam/`](workcam/) | [`assets/legal.css`](assets/legal.css) | 17 June 2026 |
 | RollieCam — pocket film camera with live analog looks | [`rolliecam/`](rolliecam/) | [`assets/rolliecam.css`](assets/rolliecam.css) | 26 June 2026 |
 | Moodraw — paint how you feel | [`moodraw/`](moodraw/) | [`assets/moodraw.css`](assets/moodraw.css) | 13 August 2026 |
+| TimeCam — timestamp camera for photos and video | [`timecam/`](timecam/) | [`assets/legal.css`](assets/legal.css) | 17 November 2026 |
+| SnapScreen — screenshot frames and editor | [`snapscreen/`](snapscreen/) | [`assets/legal.css`](assets/legal.css) | 17 November 2026 |
 
 **Wardlayer's pages are not here.** They are served at https://wardlayer.app from the
 `be-fitroomlen` repo (`site/`), moved on 3 October 2026. `assets/wardra.css` stays as a
@@ -44,6 +46,8 @@ Each app's URLs (use these in App Store Connect):
 | Task Cam | [/workcam/](https://sfunvn.github.io/legal/workcam/) | [privacy](https://sfunvn.github.io/legal/workcam/privacy.html) | [terms](https://sfunvn.github.io/legal/workcam/terms.html) |
 | RollieCam | [/rolliecam/](https://sfunvn.github.io/legal/rolliecam/) | [privacy](https://sfunvn.github.io/legal/rolliecam/privacy.html) | [terms](https://sfunvn.github.io/legal/rolliecam/terms.html) |
 | Moodraw | [/moodraw/](https://sfunvn.github.io/legal/moodraw/) | [privacy](https://sfunvn.github.io/legal/moodraw/privacy.html) | [terms](https://sfunvn.github.io/legal/moodraw/terms.html) |
+| TimeCam | [/timecam/](https://sfunvn.github.io/legal/timecam/) | [privacy](https://sfunvn.github.io/legal/timecam/privacy.html) | [terms](https://sfunvn.github.io/legal/timecam/terms.html) |
+| SnapScreen | [/snapscreen/](https://sfunvn.github.io/legal/snapscreen/) | [privacy](https://sfunvn.github.io/legal/snapscreen/privacy.html) | [terms](https://sfunvn.github.io/legal/snapscreen/terms.html) |
 
 The site is served under the `/legal/` sub-path, so links must stay relative
 (`../assets/<name>.css`, `privacy.html`), not root-absolute.
